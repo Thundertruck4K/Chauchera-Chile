@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #5b7bf5;
+  --brand-light: #7d9bfa;
+  --surface-900: #0a0e1a;
+  --surface-800: #111827;
+  --surface-700: #1a2236;
+  --surface-600: #1e293b;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--surface-900); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-800); }
+::-webkit-scrollbar-thumb { background: #2d3b55; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3d5ce8; }
+
+/* Glassmorphism card */
+.glass {
+  background: rgba(26, 34, 54, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(91, 123, 245, 0.15);
+}
+.glass-hover:hover {
+  border-color: rgba(91, 123, 245, 0.35);
+  box-shadow: 0 8px 32px rgba(91, 123, 245, 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #5b7bf5, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sidebar active indicator */
+.nav-active {
+  background: linear-gradient(135deg, rgba(91,123,245,0.2), rgba(167,139,250,0.1));
+  border-left: 2px solid #5b7bf5;
+}
+
+/* Number font */
+.num { font-family: 'JetBrains Mono', monospace; }
+
+/* Glow effect */
+.btn-glow {
+  box-shadow: 0 0 20px rgba(91,123,245,0.4);
+  transition: box-shadow 0.2s;
+}
+.btn-glow:hover { box-shadow: 0 0 30px rgba(91,123,245,0.6); }
+
+/* Card shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(91,123,245,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slideUp 0.35s ease-out both; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in { animation: fadeIn 0.3s ease-out both; }
+/* Print styles */
+@media print {
+  body { background: white !important; color: black !important; }
+  .no-print { display: none !important; }
+  .glass { background: white !important; border: 1px solid #e5e7eb !important; backdrop-filter: none !important; }
+  nav, header, aside { display: none !important; }
+  main { padding: 0 !important; }
+  #report-content { display: block !important; }
+}
